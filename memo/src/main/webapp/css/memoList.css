@@ -1,0 +1,653 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+   background-color: #c9d6ff;
+    background: linear-gradient(to right, rgb(227, 227, 227), rgb(163, 163, 163));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.list{
+ display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 900px;
+    max-width: 100%;
+  	min-height: 100%;
+    
+}
+.searchList{
+    position: fixed;	
+	background-color: #c9d6ff;
+	background: linear-gradient(to right, rgb(227, 227, 227), rgb(163, 163, 163));
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 850px;
+    padding: 25px;
+    box-sizing: border-box;
+    border-bottom: 25px solid white;
+}
+.user {
+    display: flex;
+   	flex-direction: column; 
+    align-items: flex-start;
+     width: 100%;
+}
+
+.user-name {
+    max-width: 100%; 
+    width: 100%; 
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 5px; 
+    box-sizing: border-box; 
+}
+
+
+.user-name i{
+	font-size: 30px;
+}
+
+input[type="submit"] {
+    padding: 5px 10px;
+}
+.logout-form{
+	width:70px;
+	height: 30px;
+	border-radius: 10px;
+	background-color: white;	
+}
+.logout-form i{
+	font-size: 20px;
+}
+.logout-form:hover{
+	background-color: rgb(212, 212, 212);
+}
+.search-container {
+    position: relative;
+    width: 100%;
+    
+}
+
+.search-input{
+	width: 450px;
+	height: 50px;
+	margin-left: 20px;
+	padding-right: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    
+}
+.search-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+.search-button i {
+    font-size: 30px;
+}
+.search-button i:hover{
+	color: rgb(87, 87, 87);
+}
+.button{
+	 margin-left: 1100px; /* この部分を調整 */
+    display: flex;
+    flex-direction: column;
+    padding: 10px; /* ここの値を減らしてボタンの位置を上に */
+    position: fixed;
+    top: 50%; /* 追加: ボタンを上に移動させる */
+	
+}
+.edit-button{
+	width: 60px;
+	height: 60px;
+	border-radius:50%;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+.edit-button:hover{
+	background-color:rgb(212, 212, 212);
+}
+
+.edit-button i{
+	font-size: 40px;
+}
+.add-button{
+	
+	width: 60px;
+	height: 60px;
+	border-radius:50%;
+	
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+.add-button:hover{
+	background-color:rgb(212, 212, 212);
+}
+.add-button i{
+	font-size: 40px;
+}
+.button-del{
+	width: 60px;
+	height: 60px;
+	border-radius:50%;
+	margin-top:20px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+.button-del i{
+	font-size: 40px;
+}
+.button-del:hover{
+	background-color:rgb(212, 212, 212);
+}
+#memoForm{
+	background-color: rgb(212, 212, 212);
+	max-width: 90%;
+	padding: 20px;
+	border: 2px solid black;
+	border-radius: 10px;
+	margin-top:150px;
+	min-width: 90%;
+	min-height: 800px;
+	margin-bottom: 50px;
+}
+#memoForm table{
+	line-height: 50px;
+}
+#memoForm table tr td a{
+	color:black;
+	text-decoration: none; 
+	font-size: 20px;
+	font-weight: bold;
+	
+}
+.date{
+	font-size: 15px;
+	font-weight: bold;
+}
+.memo{
+	max-width: 700px;
+	border-radius: 10px;
+	min-width: 700px;
+	background-color: white;
+	padding:10px;
+	white-space: nowrap; 
+	overflow: hidden;
+	 text-overflow: ellipsis;
+	 word-wrap: break-word;
+     word-break: break-word;
+}
+
+
+#memoForm table tr td a:hover{
+	color: rgb(212, 212, 212);
+}
+/* 後にcssファイル作成し移動 */
+/* 背景を薄暗くするためのオーバーレイ */
+#overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	display: none;
+	z-index: 9998;
+}
+
+/* モーダルウィンドウのスタイル */
+#modal {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 60%;
+	
+	background-color: white;
+	padding: 20px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	z-index: 9999;
+	
+	border-radius: 20px;
+}
+
+
+/* テキストエリアのスタイルを大きくする */
+textarea {
+	max-width: 100%;
+	min-height: 500px;
+	max-height: 500px;
+	min-width: 100%;
+	
+	font-size: 16px;
+	padding: 10px;
+	box-sizing: border-box;
+	resize: vertical; 
+}
+
+/* 閉じるボタンのスタイル */
+#closeButton {
+	float: right;
+	cursor: pointer;
+	border-radius: 10px;
+	width: 50px;
+	height: 50px;
+	margin-bottom: 20px;
+	
+}
+#closeButton i{
+	font-size: 30px;
+}
+
+
+#closeButton:hover {
+	color: #000;
+}
+
+/* チェックボックスや削除ボタンをデフォルトで非表示に */
+.memo-checkbox {
+    display: none;
+    width: 30px;
+  	height: 30px;
+    appearance: none;
+    
+  	border-radius: 50%;
+  	outline: none;
+  	cursor: pointer;
+  	margin-left: 10px;
+  	background-color: white;
+}
+.memo-checkbox:checked{
+	background-color: black;
+	 position: relative;
+}
+#editControls {
+    display: none;
+}
+#editControls p{
+	font-size: 40px;
+	font-weight: bold;
+	margin-top:20px;
+}
+
+
+
+.button-BL input {
+    font-size: 20px;
+    font-weight: bold;
+}
+.memoken{
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	 align-items: center;
+    justify-content: center;
+	border: 2px solid black;
+	margin-bottom: 20px ;
+	height:100px;
+	width: 150px;
+	font-weight: bold;
+	
+	border-radius: 10px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+
+}
+.buttonpage{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 150px;
+	border-bottom: 2px solid black;
+	padding: 10px;
+	
+}
+
+
+.buttonpage a i{
+	color: black;
+	font-size: 30px;
+	
+}
+.total-pages{
+	
+	margin: 0 10px; 
+}
+.current-page{
+	
+	margin: 0 10px; 
+}
+.totalmemo{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+}
+.buttonAE{
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	
+}
+.buttonTB{
+	
+	height: 800px;
+	margin-right: 1050px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px; /* ここの値を減らしてボタンの位置を上に */
+    
+    position: fixed;
+    top: 50%; /* 追加: ボタンを上に移動させる */	
+    
+}
+.buttonTop{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+	margin-top:20px ;
+}
+.buttonTop:hover{
+	background-color:rgb(212, 212, 212);
+}
+.buttonTop i{
+	font-size: 40px;
+}
+.buttonBot{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+	margin-top:20px ;
+	
+}
+.buttonBot:hover{
+	background-color: rgb(212, 212, 212);
+}
+.buttonBot i{
+	font-size: 40px;
+}
+
+/* テーマトグル */
+.theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px; /* 角を丸める */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%; /* 円形 */
+}
+
+input:checked + .slider {
+    background-color: #4b4e5e;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* 丸型スライダー */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+/* ダークモードのスタイル */
+.dark-mode {
+    background-color: #0e1e38;
+    color: white;
+}
+/* ダークモードのモーダルウィンドウのスタイル */
+.dark-mode #modal {
+    background-color: #1a1a1a; /* 背景色をダークに変更 */
+    border: 2px solid gold; /* 金色の枠線を適用 */
+    color: white; /* 文字色を白に変更 */
+}
+
+.dark-mode textarea {
+	background-color: #3a3a3a;
+    color: white;
+}
+
+.dark-mode .list,
+.dark-mode #memoForm {
+    background-color: #1a1a1a;
+    color: white;
+    border: 2px solid gold;
+   
+}
+
+
+.dark-mode .edit-button,
+.dark-mode .add-button,
+.dark-mode .searchList,
+.dark-mode .buttonTop,
+.dark-mode .buttonBot {
+    background-color: #1a1a1a;
+    background: linear-gradient(to right, #1a1a1a, #1a1a1a);
+    color: white;
+    border-bottom: 2px solid gold;
+   
+}
+.dark-mode .searchList{
+	width: 900px;
+	border: 2px solid gold;
+	 margin-top: -0.5%;
+	 border-top:10px solid gold ;
+}
+
+
+.dark-mode .memo {
+    background-color: #2c2c2c;
+    color: white;
+}
+
+/*.dark-mode input[type="submit"],*/
+.dark-mode .logout-form {
+    background-color: #3a3a3a;
+    color: white;
+    border: 2px solid gold;
+}
+/*.dark-mode input[type="submit"]{
+	border:none;
+}*/
+
+
+.dark-mode .search-input {
+    background-color: #3a3a3a;
+    color: white;
+    border: 2px solid gold;
+}
+
+.dark-mode .button-del {
+    background-color: #3a3a3a;
+    color: white;
+    border: 2px solid gold;
+}
+
+.dark-mode #memoForm table tr td {
+    color: white;
+}
+
+.dark-mode #memoForm table tr td a {
+    color: white;
+}
+
+.dark-mode .user-name,
+.dark-mode .logout-form {
+    color: white;
+}
+
+.dark-mode .date {
+    color: white;
+}
+
+.dark-mode .button {
+    padding: 0; /* ダークモード時のみ padding を削除 */
+}
+
+
+.dark-mode #selectedCount {
+    color: white;
+}
+
+
+.dark-mode .logout-form,
+.dark-mode .search-button,
+.dark-mode .edit-button,
+.dark-mode .add-button,
+.dark-mode .button, 
+.dark-mode .buttonTB,
+.dark-mode .buttonTop,
+.dark-mode .buttonBot	{
+/*    background-color: #3a3a3a;*/
+    color: white;
+    border: none;
+}
+.dark-mode .logout-form,
+.dark-mode .add-button, 
+.dark-mode .edit-button,
+.dark-mode .buttonBack,
+.dark-mode .buttonTop,
+.dark-mode .buttonBot {
+    border: 2px solid gold; /* 例えばゴールドのボーダーを適用 */
+}
+
+.dark-mode .search-button i {
+    color: white;
+}
+
+.dark-mode .bx-log-out, 
+.dark-mode .bx-user-circle {
+    color: white;
+}
+
+.dark-mode .bx {
+    color: white; /* ダークモードではアイコンを白くする */
+}
+
+.dark-mode .bx-x {
+    color: black; /* ダークモードではアイコンを白くする */
+}
+
+.dark-mode .bx:hover {
+    color: #f0c419; /* ホバー時にゴールドなど別の色に変更 */
+}
+
+.dark-mode .memoken{
+    background-color: #1a1a1a; /* 黒に近い濃いグレーの背景 */
+    border: 2px solid gold; /* 金色のボーダー */
+    color: #ffffff; /* 白文字 */
+    
+
+}
+.dark-mode .buttonpage{
+	border-bottom: 2px solid gold ;
+}
+/* ダークモードのスタイル */
+.dark-mode {
+    background: linear-gradient(to right, #1a1a1a, #1a1a1a);
+    color: white;
+}
+
+.buttonBack{
+	
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+.buttonBack:hover{
+	background-color: rgb(212, 212, 212);
+}
+.buttonBack i{
+	color: black;
+	font-size:40px;
+}
+
+.dark-mode .buttonBack{
+	background-color: #1a1a1a;
+    background: linear-gradient(to right, #1a1a1a, #1a1a1a);
+    color: white;
+    border-bottom: 2px solid gold;
+}
+
+/* ダークモードのcloseButton */
+.dark-mode #closeButton {
+    background-color: #3a3a3a; /* ダークモード時の背景色 */
+    border: 1px solid gold;    /* 金色の枠線 */
+    color: white;              /* アイコンやテキストの色を白に */
+}
+
+/* ダークモードのsubmitボタン */
+.dark-mode input[type="submit"] {
+    background-color: #1a1a1a;
+    color: white;
+    border: 1px solid gold;
+}
+
+.dark-mode .memo-checkbox:checked{
+	background-color: gold;
+}
+
+.highlight{
+	background-color:grey;
+}
+
+.dark-mode .highlight{
+	background-color:burlywood;
+}
